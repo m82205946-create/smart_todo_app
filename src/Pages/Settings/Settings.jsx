@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { User, Shield } from "lucide-react";
-import ChangePasswordModal from "../../Components/ChangePasswordModal/ChangePasswordModal";
+
 import "./Settings.css";
+import ChangePasswordModal from "../../components/ChangePasswordModal/ChangePasswordModal";
 
 export default function Settings() {
   const [openModal, setOpenModal] = useState(false);
