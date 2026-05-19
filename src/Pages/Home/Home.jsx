@@ -1,7 +1,5 @@
-// Home.jsx
-
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import {
   ArrowRight,
@@ -14,6 +12,8 @@ import {
 import "./Home.css";
 
 export default function Home() {
+  const navigate = useNavigate();
+
   return (
     <div className="home">
 
@@ -30,10 +30,14 @@ export default function Home() {
           </div>
         </div>
 
-        <NavLink to="/login" className="login-btns">
+        {/* FIXED BUTTON */}
+        <button
+          className="login-btns"
+          onClick={() => navigate("/login")}
+        >
           Kirish
           <ArrowRight size={18} />
-        </NavLink>
+        </button>
       </header>
 
       {/* Hero */}
@@ -54,10 +58,14 @@ export default function Home() {
           va samaradorlikni oshirish uchun qulay platforma.
         </p>
 
-        <NavLink to="/login" className="hero-btn">
+        {/* FIXED BUTTON */}
+        <button
+          className="hero-btn"
+          onClick={() => navigate("/login")}
+        >
           Kirish
           <ArrowRight size={20} />
-        </NavLink>
+        </button>
 
       </section>
 
@@ -68,7 +76,6 @@ export default function Home() {
           <div className="icon">
             <CheckCircle2 size={28} />
           </div>
-
           <h2>1,200+</h2>
           <p>BAJARILGAN TASKLAR</p>
         </div>
@@ -77,7 +84,6 @@ export default function Home() {
           <div className="icon">
             <Clock3 size={28} />
           </div>
-
           <h2>50+</h2>
           <p>KUNLIK REJALAR</p>
         </div>
@@ -86,7 +92,6 @@ export default function Home() {
           <div className="icon">
             <ListTodo size={28} />
           </div>
-
           <h2>300+</h2>
           <p>AKTIV TASKLAR</p>
         </div>
@@ -95,7 +100,6 @@ export default function Home() {
           <div className="icon">
             <Star size={28} />
           </div>
-
           <h2>10,000+</h2>
           <p>UMUMIY ESLATMALAR</p>
         </div>

@@ -18,16 +18,13 @@ import Settings from "./Pages/Settings/Settings";
 function App() {
   const [darkMode, setDarkMode] = useState(false);
 
-  // =========================
-  // AUTH STATE
-  // =========================
-  const [user, setUser] = useState(() =>
-    JSON.parse(localStorage.getItem("currentUser"))
-  );
+  // ================= AUTH =================
+  const [user, setUser] = useState(() => {
+    const saved = localStorage.getItem("currentUser");
+    return saved ? JSON.parse(saved) : null;
+  });
 
-  // =========================
-  // HABITS STATE
-  // =========================
+  // ================= HABITS =================
   const [habits, setHabits] = useState(() => {
     const saved = localStorage.getItem("habits");
     return saved ? JSON.parse(saved) : [];
@@ -37,17 +34,13 @@ function App() {
     localStorage.setItem("habits", JSON.stringify(habits));
   }, [habits]);
 
-  // =========================
-  // LOGIN
-  // =========================
+  // ================= LOGIN =================
   const handleLogin = (userData) => {
     localStorage.setItem("currentUser", JSON.stringify(userData));
     setUser(userData);
   };
 
-  // =========================
-  // LOGOUT
-  // =========================
+  // ================= LOGOUT =================
   const handleLogout = () => {
     localStorage.removeItem("currentUser");
     setUser(null);
@@ -60,36 +53,35 @@ function App() {
       <BrowserRouter>
         <Routes>
 
-          {/* =========================
-              AUTH ROUTES
-          ========================= */}
+          {/* ================= PUBLIC HOME ================= */}
+          <Route path="/" element={<Home user={user} />} />
+
+          {/* ================= LOGIN ================= */}
           <Route
             path="/login"
             element={
               user ? (
-                <Navigate to="/" replace />
+                <Navigate to="/dashboard" replace />
               ) : (
                 <Login setUser={handleLogin} />
               )
             }
           />
 
+          {/* ================= REGISTER ================= */}
           <Route
             path="/register"
             element={
               user ? (
-                <Navigate to="/" replace />
+                <Navigate to="/dashboard" replace />
               ) : (
                 <Register />
               )
             }
           />
 
-          {/* =========================
-              PROTECTED ROUTES
-          ========================= */}
+          {/* ================= PROTECTED AREA ================= */}
           <Route
-            path="/"
             element={
               user ? (
                 <Layout
@@ -103,30 +95,30 @@ function App() {
             }
           >
 
-            {/* 🔥 DEFAULT PAGE = DASHBOARD */}
-            <Route index element={<Navigate to="dashboard" replace />} />
-
             <Route
-              path="dashboard"
+              path="/dashboard"
               element={<Dashboard habits={habits} />}
             />
 
             <Route
-              path="habits"
+              path="/habits"
               element={<Habits habits={habits} setHabits={setHabits} />}
             />
 
             <Route
-              path="tasks"
+              path="/tasks"
               element={<WeeklyTasks habits={habits} />}
             />
 
             <Route
-              path="settings"
+              path="/settings"
               element={<Settings />}
             />
 
           </Route>
+
+          {/* ================= CATCH ALL ================= */}
+          <Route path="*" element={<Navigate to="/" replace />} />
 
         </Routes>
       </BrowserRouter>

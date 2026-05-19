@@ -19,7 +19,7 @@
         <nav className="sidebar-nav">
 
           <NavLink
-            to="dashboard"
+            to="/dashboard"
             end
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"

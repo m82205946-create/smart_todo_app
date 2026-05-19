@@ -56,7 +56,7 @@ export default function Login({ setUser }) {
     toast.success("Muvaffaqiyatli login bo‘ldi ✅");
 
     setTimeout(() => {
-      navigate("/");
+      navigate("/dashboard");
     }, 1000);
   };
 
