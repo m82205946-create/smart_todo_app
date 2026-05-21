@@ -1,15 +1,128 @@
+
+/* =========================
+   ROOT LAYOUT
+========================= */
+
 .layout {
   display: flex;
   min-height: 100vh;
+  background: #f8fafc;
 }
+
+/* DARK MODE */
+.dark.layout {
+  background: #0b1220;
+  color: #e5e7eb;
+}
+
+/* =========================
+   SIDEBAR WIDTH FIX
+========================= */
+
+:root {
+  --sidebar-width: 280px;
+}
+
+/* =========================
+   RIGHT SIDE (IMPORTANT PART)
+========================= */
 
 .layout-right {
-  flex: 1;
+  margin-left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: all 0.3s ease;
 }
+
+/* =========================
+   HEADER
+========================= */
+
+.layout-right header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.dark .layout-right header {
+  background: #0f172a;
+  border-bottom: 1px solid #1f2937;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
 
 .layout-content {
-  padding: 30px;
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
 }
 
+/* =========================
+   SIDEBAR FIX (must match Sidebar.jsx)
+========================= */
 
-  
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: white;
+  border-right: 1px solid #e5e7eb;
+  z-index: 1000;
+}
+
+.dark .sidebar {
+  background: #0f172a;
+  border-right: 1px solid #1f2937;
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .layout-right {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+    transition: 0.3s;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .layout-right header {
+    padding: 0 12px;
+  }
+
+  .layout-content {
+    padding: 12px;
+  }
+}
+
+/* =========================
+   OVERLAY SUPPORT
+========================= */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 900;
+}

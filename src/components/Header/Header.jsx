@@ -1,59 +1,119 @@
-import { Moon, Sun, User, LogOut } from "lucide-react";
-import { useState } from "react";
+import {
+  Moon,
+  Sun,
+  User,
+  LogOut,
+  Menu,
+  X,
+} from "lucide-react";
+
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 import "./Header.css";
 
-export default function Header({ darkMode, setDarkMode, setIsAuth }) {
-  const [open, setOpen] = useState(false);
+export default function Header({
+  darkMode,
+  setDarkMode,
+  setUser,
+  sidebarOpen,
+  setSidebarOpen,
+}) {
+  const [profileOpen, setProfileOpen] = useState(false);
+
   const navigate = useNavigate();
 
+  // LOGOUT
   const logout = () => {
-    // 1. App.jsx dagi handleLogout funksiyasini ishga tushirish
-    // Bu joyda xatolikni oldini olish uchun funksiya ekanligini tekshiramiz
-    if (typeof setIsAuth === "function") {
-      setIsAuth();
+    if (typeof setUser === "function") {
+      setUser(null);
     } else {
-      // Agar prop kelmasa, xavfsizlik uchun localStoreni tozalab yuboramiz
       localStorage.removeItem("currentUser");
-      window.location.reload(); 
     }
 
-    // 2. Dropdownni yopish
-    setOpen(false);
+    setProfileOpen(false);
+    navigate("/");
+  };
 
-    // 3. Login sahifasiga yo'naltirish
-    navigate("/login");
+  // ESC CLOSE
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === "Escape") {
+        setProfileOpen(false);
+        setSidebarOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [setSidebarOpen]);
+
+  // OVERLAY CLOSE
+  const closeAll = () => {
+    setSidebarOpen(false);
+    setProfileOpen(false);
   };
 
   return (
-    <header className="header">
-      <input className="search" placeholder="Search..." />
+    <>
+      {/* OVERLAY */}
+      {(sidebarOpen || profileOpen) && (
+        <div className="overlay" onClick={closeAll} />
+      )}
 
-      <div className="header-right">
-        {/* DARK MODE TOGGLE */}
+      <header className="header">
+
+        {/* MENU BUTTON (MOBILE SIDEBAR) */}
         <button
-          className="dark-btn"
-          onClick={() => setDarkMode(!darkMode)}
+          className="menu-btn"
+          onClick={() => setSidebarOpen(!sidebarOpen)}
         >
-          {darkMode ? <Sun size={20} color="#fbbf24" /> : <Moon size={20} color="#94a3b8" />}
+          {sidebarOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
 
-        {/* PROFILE AVATAR */}
-        <div className="avatar-wrapper">
-          <div className="avatar" onClick={() => setOpen(!open)}>
-            <User size={22} color="white" />
-          </div>
+        {/* SEARCH */}
+        <input className="search" placeholder="Search..." />
 
-          {open && (
-            <div className="dropdown">
-              <div className="dropdown-item" onClick={logout}>
-                <LogOut size={16} />
-                <span>Logout</span>
-              </div>
+        {/* RIGHT SIDE */}
+        <div className="header-right">
+
+          {/* DARK MODE */}
+          <button
+            className="icon-btn"
+            onClick={() => setDarkMode(!darkMode)}
+          >
+            {darkMode ? (
+              <Sun size={20} color="#fbbf24" />
+            ) : (
+              <Moon size={20} color="#64748b" />
+            )}
+          </button>
+
+          {/* PROFILE */}
+          <div className="avatar-wrapper">
+
+            <div
+              className="avatar"
+              onClick={() => setProfileOpen(!profileOpen)}
+            >
+              <User size={22} color="#fff" />
             </div>
-          )}
+
+            {/* DROPDOWN */}
+            {profileOpen && (
+              <div className="dropdown">
+
+                <div className="dropdown-item" onClick={logout}>
+                  <LogOut size={16} />
+                  <span>Logout</span>
+                </div>
+
+              </div>
+            )}
+
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </>
   );
 }

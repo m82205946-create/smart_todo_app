@@ -1,757 +1,919 @@
 /* =========================================================
-   SMART TODO - FULL MODERN HOME CSS
+   HOME MAIN
 ========================================================= */
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+.home {
+  width: 100%;
+  min-height: 100vh;
 
-/* =========================================================
-   RESET
-========================================================= */
+  padding: 0 70px;
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+  position: relative;
 
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:"Inter",sans-serif;
-  background:#f5f7ff;
-  overflow-x:hidden;
-}
-
-/* =========================================================
-   ROOT
-========================================================= */
-
-:root{
-
-  --bg:#f5f7ff;
-  --white:#ffffff;
-
-  --text:#0f172a;
-  --gray:#64748b;
-
-  --purple:#7c3aed;
-  --purple2:#8b5cf6;
-  --blue:#4f46e5;
-
-  --border:#e5e7eb;
-
-  --gradient:
-  linear-gradient(
-    135deg,
-    #7c3aed,
-    #4f46e5
-  );
-
-  --shadow:
-  0 10px 30px rgba(0,0,0,.06);
-
-  --shadow2:
-  0 18px 40px rgba(124,58,237,.18);
-
-}
-
-/* =========================================================
-   HOME
-========================================================= */
-
-.home{
-  width:100%;
-  min-height:100vh;
-
-  padding:0 70px;
-
-  position:relative;
-
-  overflow:hidden;
+  overflow: hidden;
 
   background:
-  radial-gradient(
-    circle at top left,
-    rgba(124,58,237,.12),
-    transparent 28%
-  ),
-
-  radial-gradient(
-    circle at bottom right,
-    rgba(79,70,229,.10),
-    transparent 28%
-  ),
-
-  #f5f7ff;
+    radial-gradient(
+      circle at top left,
+      rgba(124, 58, 237, 0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(79, 70, 229, 0.1),
+      transparent 28%
+    ),
+    #f5f7ff;
 }
 
 /* =========================================================
-   BG EFFECTS
+   BACKGROUND EFFECTS
 ========================================================= */
 
-.home::before{
-  content:"";
+.home::before {
+  content: "";
 
-  position:absolute;
+  position: absolute;
 
-  top:-120px;
-  left:-120px;
+  top: -120px;
+  left: -120px;
 
-  width:320px;
-  height:320px;
+  width: 320px;
+  height: 320px;
 
-  border-radius:50%;
+  border-radius: 50%;
 
-  background:rgba(124,58,237,.10);
+  background: rgba(124, 58, 237, 0.12);
 
-  filter:blur(90px);
+  filter: blur(90px);
+
+  z-index: 0;
 }
 
-.home::after{
-  content:"";
+.home::after {
+  content: "";
 
-  position:absolute;
+  position: absolute;
 
-  bottom:-120px;
-  right:-120px;
+  right: -120px;
+  bottom: -120px;
 
-  width:320px;
-  height:320px;
+  width: 320px;
+  height: 320px;
 
-  border-radius:50%;
+  border-radius: 50%;
 
-  background:rgba(79,70,229,.10);
+  background: rgba(79, 70, 229, 0.12);
 
-  filter:blur(90px);
+  filter: blur(90px);
+
+  z-index: 0;
 }
 
 /* =========================================================
    NAVBAR
 ========================================================= */
 
-.navbar{
-  width:100%;
-  height:95px;
+.navbar {
+  width: 100%;
+  min-height: 100px;
 
-  display:flex;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  justify-content:space-between;
- text-align: center;
-  margin-top:50px;
+  padding-top: 30px;
 
-  position:relative;
-  z-index:10;
+  position: relative;
+  z-index: 5;
 }
 
 /* =========================================================
    LOGO
 ========================================================= */
 
-.logo{
-  display:flex;
-  align-items:center;
-  gap:16px;
-  margin-top: 30px;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  cursor: pointer;
 }
 
-.logo-circle{
-  width:60px;
-  height:60px;
+/* =========================================================
+   LOGO CIRCLE
+========================================================= */
 
-  border-radius:20px;
+.logo-circle {
+  width: 64px;
+  height: 64px;
 
-  background:var(--gradient);
+  border-radius: 22px;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #4f46e5
+    );
 
-  color:white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  flex-shrink:0;
+  color: white;
 
-  box-shadow:var(--shadow2);
+  box-shadow:
+    0 15px 35px rgba(124, 58, 237, 0.22);
+
+  transition: 0.35s ease;
 }
 
-.texts{
-    align-items: center;
-    justify-content: center;
-  display:flex;
-  gap: 10px;
-  
+.logo:hover .logo-circle {
+  transform:
+    rotate(-8deg)
+    scale(1.06);
 }
 
-.logo h2{
-  font-size:34px;
-  line-height:1;
+/* =========================================================
+   TEXTS
+========================================================= */
 
-  font-weight:900;
+.texts {
+  display: flex;
+  flex-direction: column;
 
-  color:var(--text);
+  justify-content: center;
 }
 
-.logo p{
-  margin-top:6px;
+/* =========================================================
+   LOGO TITLE
+========================================================= */
 
-  font-size:11px;
-  font-weight:700;
+.texts h2 {
+  font-size: 34px;
+  line-height: 1;
 
-  letter-spacing:4px;
+  font-weight: 900;
 
-  color:var(--gray);
+  color: #0f172a;
+}
+
+/* =========================================================
+   LOGO SUBTITLE
+========================================================= */
+
+.texts p {
+  margin-top: 8px;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 4px;
+
+  color: #64748b;
 }
 
 /* =========================================================
    LOGIN BUTTON
 ========================================================= */
 
-.login-btns{
-  max-width:170px;
-  height:58px;
+.login-btns {
+  min-width: 180px;
+  height: 60px;
 
-  padding:0 28px;
- 
-  border-radius:18px;
+  padding: 0 30px;
 
-  background:var(--gradient);
+  border: none;
 
-  color:white;
-  text-decoration:none;
+  border-radius: 20px;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #4f46e5
+    );
 
-  font-size:17px;
-  font-weight:700;
+  color: white;
 
-  transition:.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 
-  box-shadow:0 15px 30px rgba(124,58,237,.16);
+  font-size: 17px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 16px 35px rgba(124, 58, 237, 0.2);
+
+  transition: 0.3s ease;
+
+  position: relative;
+
+  overflow: hidden;
 }
 
-.login-btn:hover{
-  transform:translateY(-3px);
+/* =========================================================
+   LOGIN BUTTON SHINE
+========================================================= */
+
+.login-btns::before {
+  content: "";
+
+  position: absolute;
+
+  top: -40px;
+  left: -120px;
+
+  width: 70px;
+  height: 180px;
+
+  background: rgba(255, 255, 255, 0.2);
+
+  transform: rotate(25deg);
+
+  transition: 0.7s;
+}
+
+.login-btns:hover::before {
+  left: 260px;
+}
+
+/* =========================================================
+   LOGIN BUTTON HOVER
+========================================================= */
+
+.login-btns:hover {
+  transform:
+    translateY(-4px)
+    scale(1.02);
+
+  box-shadow:
+    0 22px 45px rgba(124, 58, 237, 0.3);
 }
 
 /* =========================================================
    HERO
 ========================================================= */
 
-.hero{
-  width:100%;
-  min-height:72vh;
+.hero {
+  width: 100%;
+  min-height: 72vh;
 
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  flex-direction: column;
 
-  text-align:center;
+  align-items: center;
+  justify-content: center;
 
-  position:relative;
-  z-index:5;
+  text-align: center;
+
+  position: relative;
+  z-index: 5;
 }
 
 /* =========================================================
    BADGE
 ========================================================= */
 
-.badge{
-  padding:12px 24px;
+.badge {
+  padding: 12px 24px;
 
-  border-radius:999px;
+  border-radius: 999px;
 
-  background:#ede9fe;
+  background: #ede9fe;
 
-  border:1px solid #ddd6fe;
+  border:
+    1px solid #ddd6fe;
 
-  color:#5b21b6;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 
-  display:flex;
-  align-items:center;
-  gap:8px;
+  color: #5b21b6;
 
-  font-size:14px;
-  font-weight:700;
+  font-size: 14px;
+  font-weight: 700;
 
-  margin-bottom:34px;
+  margin-bottom: 34px;
+
+  animation:
+    fadeUp 0.8s ease;
 }
 
 /* =========================================================
    HERO TITLE
 ========================================================= */
 
-.hero h1{
-  font-size:96px;
-  line-height:1.02;
+.hero h1 {
+  font-size: 96px;
+  line-height: 1.02;
 
-  font-weight:900;
+  font-weight: 900;
 
-  color:var(--text);
+  color: #0f172a;
 
-  max-width:950px;
+  max-width: 950px;
+
+  animation:
+    fadeUp 0.9s ease;
 }
 
-.hero h1 span{
-  background:var(--gradient);
+/* =========================================================
+   HERO SPAN
+========================================================= */
 
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+.hero h1 span {
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #4f46e5
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* =========================================================
    HERO DESCRIPTION
 ========================================================= */
 
-.hero p{
-  margin-top:30px;
+.hero p {
+  margin-top: 30px;
 
-  max-width:760px;
+  max-width: 760px;
 
-  color:var(--gray);
+  color: #64748b;
 
-  font-size:24px;
-  line-height:1.8;
+  font-size: 24px;
+  line-height: 1.8;
+
+  animation:
+    fadeUp 1s ease;
 }
 
 /* =========================================================
    HERO BUTTON
 ========================================================= */
 
-.hero-btn{
-  margin-top:42px;
+.hero-btn {
+  margin-top: 42px;
 
-  min-width:190px;
-  height:64px;
+  min-width: 200px;
+  height: 66px;
 
-  padding:0 36px;
+  padding: 0 38px;
 
-  border-radius:22px;
+  border: none;
 
-  background:var(--gradient);
+  border-radius: 24px;
 
-  color:white;
-  text-decoration:none;
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #4f46e5
+    );
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
+  color: white;
 
-  font-size:21px;
-  font-weight:800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 
-  transition:.3s;
+  font-size: 21px;
+  font-weight: 800;
+
+  cursor: pointer;
 
   box-shadow:
-  0 18px 40px rgba(124,58,237,.20);
+    0 20px 45px rgba(124, 58, 237, 0.22);
+
+  transition: 0.35s ease;
+
+  animation:
+    fadeUp 1.1s ease;
 }
 
-.hero-btn:hover{
-  transform:translateY(-5px) scale(1.02);
+/* =========================================================
+   HERO BUTTON HOVER
+========================================================= */
+
+.hero-btn:hover {
+  transform:
+    translateY(-5px)
+    scale(1.03);
+
+  box-shadow:
+    0 25px 55px rgba(124, 58, 237, 0.35);
 }
 
 /* =========================================================
    STATS
 ========================================================= */
 
-.stats{
-  width:100%;
+.stats {
+  width: 100%;
 
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
+  display: grid;
+  grid-template-columns:
+    repeat(4, 1fr);
 
-  gap:28px;
+  gap: 28px;
 
-  padding-bottom:80px;
+  padding-bottom: 90px;
 
-  position:relative;
-  z-index:5;
+  position: relative;
+  z-index: 5;
 }
 
 /* =========================================================
    CARD
 ========================================================= */
 
-.card{
-  background:white;
+.card {
+  background: white;
 
-  border-radius:34px;
+  border-radius: 34px;
 
-  padding:42px 30px;
+  padding: 42px 30px;
 
-  text-align:center;
+  text-align: center;
 
-  border:1px solid var(--border);
+  border:
+    1px solid #e5e7eb;
 
-  position:relative;
+  position: relative;
 
-  overflow:hidden;
-
-  transition:.35s;
-
-  box-shadow:var(--shadow);
-}
-
-.card:hover{
-  transform:translateY(-8px);
+  overflow: hidden;
 
   box-shadow:
-  0 20px 45px rgba(0,0,0,.08);
+    0 10px 30px rgba(0, 0, 0, 0.06);
+
+  transition: 0.35s ease;
+
+  animation:
+    fadeUp 1s ease;
 }
 
 /* =========================================================
-   CARD TOP BORDER
+   CARD HOVER
 ========================================================= */
 
-.card::before{
-  content:"";
+.card:hover {
+  transform:
+    translateY(-10px);
 
-  position:absolute;
+  box-shadow:
+    0 24px 50px rgba(0, 0, 0, 0.09);
+}
 
-  top:0;
-  left:0;
+/* =========================================================
+   CARD TOP LINE
+========================================================= */
 
-  width:100%;
-  height:6px;
+.card::before {
+  content: "";
 
-  background:var(--gradient);
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 6px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #4f46e5
+    );
 }
 
 /* =========================================================
    CARD DECOR
 ========================================================= */
 
-.card::after{
-  content:"";
+.card::after {
+  content: "";
 
-  position:absolute;
+  position: absolute;
 
-  top:-40px;
-  right:-40px;
+  top: -40px;
+  right: -40px;
 
-  width:120px;
-  height:120px;
+  width: 120px;
+  height: 120px;
 
-  border-radius:50%;
+  border-radius: 50%;
 
-  background:rgba(124,58,237,.07);
+  background:
+    rgba(124, 58, 237, 0.06);
 }
 
 /* =========================================================
    ICON
 ========================================================= */
 
-.icon{
-  width:72px;
-  height:72px;
+.icon {
+  width: 76px;
+  height: 76px;
 
-  margin:0 auto 24px;
+  margin: 0 auto 24px;
 
-  border-radius:24px;
+  border-radius: 24px;
 
-  background:#f3e8ff;
+  background: #f3e8ff;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  color:#6d28d9;
+  color: #6d28d9;
 
-  position:relative;
-  z-index:2;
+  position: relative;
+  z-index: 2;
+
+  transition: 0.3s ease;
+}
+
+/* =========================================================
+   ICON HOVER
+========================================================= */
+
+.card:hover .icon {
+  transform:
+    rotate(-8deg)
+    scale(1.08);
 }
 
 /* =========================================================
    CARD TITLE
 ========================================================= */
 
-.card h2{
-  font-size:52px;
-  font-weight:900;
+.card h2 {
+  font-size: 52px;
+  font-weight: 900;
 
-  color:var(--text);
+  color: #0f172a;
 
-  margin-bottom:12px;
+  margin-bottom: 12px;
 
-  position:relative;
-  z-index:2;
+  position: relative;
+  z-index: 2;
 }
 
 /* =========================================================
    CARD TEXT
 ========================================================= */
 
-.card p{
-  color:var(--gray);
+.card p {
+  color: #64748b;
 
-  font-size:15px;
-  font-weight:700;
+  font-size: 15px;
+  font-weight: 700;
 
-  letter-spacing:1px;
+  letter-spacing: 1px;
 
-  position:relative;
-  z-index:2;
+  position: relative;
+  z-index: 2;
 }
 
 /* =========================================================
    FLOAT EFFECTS
 ========================================================= */
 
-.float1{
-  position:absolute;
+.float1 {
+  position: absolute;
 
-  top:220px;
-  left:80px;
+  top: 220px;
+  left: 80px;
 
-  width:120px;
-  height:120px;
+  width: 120px;
+  height: 120px;
 
-  border-radius:30px;
+  border-radius: 30px;
 
-  background:rgba(124,58,237,.08);
+  background:
+    rgba(124, 58, 237, 0.08);
 
-  transform:rotate(25deg);
+  transform: rotate(25deg);
 
-  backdrop-filter:blur(10px);
+  backdrop-filter: blur(10px);
+
+  animation:
+    floatUp 5s infinite ease-in-out;
 }
 
-.float2{
-  position:absolute;
+.float2 {
+  position: absolute;
 
-  bottom:180px;
-  right:90px;
+  right: 90px;
+  bottom: 180px;
 
-  width:140px;
-  height:140px;
+  width: 140px;
+  height: 140px;
 
-  border-radius:50%;
+  border-radius: 50%;
 
-  background:rgba(79,70,229,.08);
+  background:
+    rgba(79, 70, 229, 0.08);
 
-  backdrop-filter:blur(10px);
+  backdrop-filter: blur(10px);
+
+  animation:
+    floatUp 6s infinite ease-in-out;
 }
 
 /* =========================================================
    ANIMATIONS
 ========================================================= */
 
-@keyframes fadeUp{
+@keyframes fadeUp {
 
-  from{
-    opacity:0;
-    transform:translateY(25px);
+  from {
+    opacity: 0;
+    transform:
+      translateY(25px);
   }
 
-  to{
-    opacity:1;
-    transform:translateY(0);
+  to {
+    opacity: 1;
+    transform:
+      translateY(0);
+  }
+}
+
+@keyframes floatUp {
+
+  0% {
+    transform:
+      translateY(0px);
   }
 
-}
-
-@keyframes floatUp{
-
-  0%{
-    transform:translateY(0px);
+  50% {
+    transform:
+      translateY(-12px);
   }
 
-  50%{
-    transform:translateY(-12px);
+  100% {
+    transform:
+      translateY(0px);
   }
-
-  100%{
-    transform:translateY(0px);
-  }
-
-}
-
-.hero{
-  animation:fadeUp .7s ease;
-}
-
-.card{
-  animation:fadeUp .9s ease;
-}
-
-.float1{
-  animation:floatUp 5s infinite ease-in-out;
-}
-
-.float2{
-  animation:floatUp 6s infinite ease-in-out;
 }
 
 /* =========================================================
    SCROLLBAR
 ========================================================= */
 
-::-webkit-scrollbar{
-  width:10px;
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-::-webkit-scrollbar-track{
-  background:#eceff5;
+::-webkit-scrollbar-track {
+  background: #eceff5;
 }
 
-::-webkit-scrollbar-thumb{
-  background:linear-gradient(
-    180deg,
-    #7c3aed,
-    #4f46e5
-  );
+::-webkit-scrollbar-thumb {
+  background:
+    linear-gradient(
+      180deg,
+      #7c3aed,
+      #4f46e5
+    );
 
-  border-radius:20px;
+  border-radius: 20px;
 }
 
 /* =========================================================
    SELECTION
 ========================================================= */
 
-::selection{
-  background:#7c3aed;
-  color:white;
+::selection {
+  background: #7c3aed;
+  color: white;
 }
 
 /* =========================================================
-   RESPONSIVE 1300
+   RESPONSIVE 1400
 ========================================================= */
 
-@media(max-width:1300px){
+@media (max-width: 1400px) {
 
-  .hero h1{
-    font-size:78px;
+  .hero h1 {
+    font-size: 82px;
   }
 
-  .hero p{
-    font-size:22px;
+  .hero p {
+    font-size: 22px;
   }
-
-  .stats{
-    grid-template-columns:repeat(2,1fr);
-  }
-
 }
 
 /* =========================================================
-   RESPONSIVE 900
+   RESPONSIVE 1200
 ========================================================= */
 
-@media(max-width:900px){
+@media (max-width: 1200px) {
 
-  .home{
-    padding:0 30px;
+  .home {
+    padding: 0 40px;
   }
 
-  .hero h1{
-    font-size:58px;
+  .hero h1 {
+    font-size: 72px;
   }
 
-  .hero p{
-    font-size:18px;
+  .stats {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE 992
+========================================================= */
+
+@media (max-width: 992px) {
+
+  .hero h1 {
+    font-size: 60px;
   }
 
+  .hero p {
+    font-size: 19px;
+  }
+
+  .texts h2 {
+    font-size: 28px;
+  }
 }
 
 /* =========================================================
    RESPONSIVE 768
 ========================================================= */
 
-@media(max-width:768px){
+@media (max-width: 768px) {
 
-  .navbar{
-    flex-direction:column;
-
-    justify-content:center;
-
-    gap:22px;
-
-    height:auto;
-
-    padding-top:24px;
+  .home {
+    padding: 0 24px;
   }
 
-  .logo{
-    width:100%;
+  .navbar {
+    flex-direction: column;
 
-    justify-content:center;
+    justify-content: center;
+
+    gap: 24px;
+
+    padding-top: 24px;
   }
 
-  .hero{
-    min-height:auto;
+  .logo {
+    width: 100%;
 
-    padding:70px 0;
+    justify-content: center;
   }
 
-  .hero h1{
-    font-size:46px;
+  .hero {
+    min-height: auto;
+
+    padding: 80px 0;
   }
 
-  .hero p{
-    font-size:16px;
-
-    line-height:1.7;
+  .hero h1 {
+    font-size: 48px;
   }
 
-  .hero-btn{
-    width:100%;
-    max-width:280px;
+  .hero p {
+    font-size: 16px;
 
-    font-size:18px;
+    line-height: 1.7;
   }
 
-  .login-btn{
-    width:100%;
+  .hero-btn {
+    width: 100%;
+    max-width: 300px;
+
+    font-size: 18px;
   }
 
-  .stats{
-    grid-template-columns:1fr;
+  .login-btns {
+    width: 100%;
+    max-width: 300px;
   }
 
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 38px 24px;
+  }
 }
 
 /* =========================================================
    RESPONSIVE 500
 ========================================================= */
 
-@media(max-width:500px){
+@media (max-width: 500px) {
 
-  .home{
-    padding:0 18px;
+  .home {
+    padding: 0 18px;
   }
 
-  .logo h2{
-    font-size:26px;
+  .logo {
+    gap: 14px;
   }
 
-  .logo p{
-    letter-spacing:2px;
+  .logo-circle {
+    width: 56px;
+    height: 56px;
   }
 
-  .hero h1{
-    font-size:38px;
+  .texts h2 {
+    font-size: 24px;
   }
 
-  .hero p{
-    font-size:15px;
+  .texts p {
+    font-size: 10px;
+
+    letter-spacing: 2px;
   }
 
-  .badge{
-    font-size:12px;
-
-    padding:10px 18px;
+  .hero h1 {
+    font-size: 38px;
   }
 
-  .card{
-    border-radius:28px;
+  .hero p {
+    font-size: 15px;
   }
 
-  .card h2{
-    font-size:40px;
+  .badge {
+    font-size: 12px;
+
+    padding: 10px 18px;
   }
 
+  .hero-btn {
+    height: 58px;
+
+    font-size: 16px;
+  }
+
+  .login-btns {
+    height: 56px;
+
+    font-size: 16px;
+  }
+
+  .card {
+    border-radius: 28px;
+  }
+
+  .card h2 {
+    font-size: 40px;
+  }
+
+  .card p {
+    font-size: 13px;
+  }
+
+  .icon {
+    width: 68px;
+    height: 68px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE 400
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .texts h2 {
+    font-size: 20px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .card {
+    padding: 32px 20px;
+  }
+
+  .card h2 {
+    font-size: 34px;
+  }
 }

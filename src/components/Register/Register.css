@@ -1,297 +1,670 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+/* =========================================================
+   REGISTER CONTAINER
+========================================================= */
 
-.register-container {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+.register-container{
+  width:100%;
+  min-height:100vh;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-  min-height: 100vh;
-  width: 100%;
+  padding:20px;
 
-  /* 🌈 oq + purple soft background */
-  background: radial-gradient(circle at top left, #f8fafc, #ede9fe);
+  position:relative;
+
+  overflow:hidden;
+
+  background:
+  radial-gradient(
+    circle at top left,
+    rgba(124,58,237,.12),
+    transparent 28%
+  ),
+
+  radial-gradient(
+    circle at bottom right,
+    rgba(79,70,229,.12),
+    transparent 28%
+  ),
+
+  #f5f7ff;
 }
 
-/* 🧊 GLASS CARD */
-.auth-box {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+/* =========================================================
+   BG EFFECTS
+========================================================= */
 
-  border: 1px solid rgba(139, 92, 246, 0.2);
+.register-container::before{
+  content:"";
 
-  padding: 3rem;
-  border-radius: 2rem;
+  position:absolute;
 
-  width: 100%;
-  max-width: 420px;
+  top:-120px;
+  left:-120px;
 
-  text-align: center;
+  width:320px;
+  height:320px;
 
-  box-shadow: 0 25px 60px rgba(139, 92, 246, 0.15);
+  border-radius:50%;
 
-  position: relative;
-  overflow: hidden;
+  background:
+  rgba(124,58,237,.14);
+
+  filter:blur(90px);
 }
 
-/* 💜 PURPLE LIGHT EFFECT */
-.auth-box::before {
-  content: "";
-  position: absolute;
+.register-container::after{
+  content:"";
 
-  width: 240px;
-  height: 240px;
+  position:absolute;
 
-  background: radial-gradient(circle, rgba(139,92,246,0.25), transparent 70%);
+  right:-120px;
+  bottom:-120px;
 
-  top: -90px;
-  right: -90px;
+  width:320px;
+  height:320px;
 
-  filter: blur(10px);
+  border-radius:50%;
+
+  background:
+  rgba(79,70,229,.14);
+
+  filter:blur(90px);
 }
 
-/* TITLE */
-.auth-box h2 {
-  color: #1e1b4b;
-  font-size: 1.9rem;
-  margin-bottom: 0.5rem;
-  font-weight: 700;
+/* =========================================================
+   AUTH BOX
+========================================================= */
+
+.auth-box{
+  width:100%;
+  max-width:460px;
+
+  padding:50px 40px;
+
+  border-radius:34px;
+
+  background:
+  rgba(255,255,255,.92);
+
+  backdrop-filter:blur(18px);
+
+  border:
+  1px solid rgba(255,255,255,.4);
+
+  box-shadow:
+  0 20px 50px rgba(0,0,0,.08);
+
+  position:relative;
+  z-index:5;
+
+  animation:
+  fadeUp .7s ease;
 }
 
-/* TEXT */
-.auth-box p {
-  color: #6b7280;
-  font-size: 0.9rem;
-  margin-bottom: 2rem;
+/* =========================================================
+   TITLE
+========================================================= */
+
+.auth-box h2{
+  font-size:40px;
+  font-weight:900;
+
+  text-align:center;
+
+  color:#111827;
 }
 
-/* INPUT */
-.input-group {
-  margin-bottom: 1rem;
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.auth-box p{
+  margin-top:10px;
+  margin-bottom:34px;
+
+  text-align:center;
+
+  color:#64748b;
+
+  font-size:16px;
 }
 
-.auth-box input {
-  width: 100%;
-  padding: 0.9rem 1.2rem;
+/* =========================================================
+   INPUT GROUP
+========================================================= */
 
-  background: rgba(255, 255, 255, 0.9);
+.input-group{
+  width:100%;
 
-  border: 1px solid rgba(139, 92, 246, 0.25);
+  position:relative;
 
-  border-radius: 0.9rem;
-
-  color: #1e1b4b;
-  font-size: 1rem;
-
-  outline: none;
-  transition: all 0.25s ease;
+  margin-bottom:22px;
 }
 
-/* INPUT FOCUS */
-.auth-box input:focus {
-  border-color: #8b5cf6;
-  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
-  transform: translateY(-2px);
+/* =========================================================
+   INPUT
+========================================================= */
+
+.input-group input{
+  width:100%;
+  height:62px;
+
+  padding:0 20px;
+
+  border-radius:18px;
+
+  border:
+  1px solid #dbe1ea;
+
+  background:
+  rgba(255,255,255,.9);
+
+  outline:none;
+
+  font-size:16px;
+  font-weight:500;
+
+  color:#111827;
+
+  transition:.3s;
 }
 
-/* REGISTER BUTTON */
-.register-btn {
-  width: 100%;
-  padding: 0.9rem;
+/* =========================================================
+   PLACEHOLDER
+========================================================= */
 
-  background: linear-gradient(135deg, #8b5cf6, #6366f1);
-  color: white;
-
-  border: none;
-  border-radius: 0.9rem;
-
-  font-size: 1rem;
-  font-weight: 700;
-
-  cursor: pointer;
-  margin-top: 1rem;
-
-  transition: all 0.3s ease;
+.input-group input::placeholder{
+  color:#94a3b8;
 }
 
-.register-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.25);
+/* =========================================================
+   INPUT FOCUS
+========================================================= */
+
+.input-group input:focus{
+  border-color:#7c3aed;
+
+  box-shadow:
+  0 0 0 5px rgba(124,58,237,.12);
 }
 
-/* ERROR */
-.error-msg {
-  color: #ef4444;
-  background: rgba(239, 68, 68, 0.08);
+/* =========================================================
+   PASSWORD GROUP
+========================================================= */
 
-  padding: 0.7rem;
-  border-radius: 0.7rem;
-
-  font-size: 0.85rem;
-  margin-bottom: 1rem;
-
-  border-left: 4px solid #ef4444;
+.password-group{
+  position:relative;
 }
 
-/* SUCCESS */
-.success-msg {
-  color: #10b981;
-  background: rgba(16, 185, 129, 0.08);
+/* =========================================================
+   EYE BUTTON
+========================================================= */
 
-  padding: 0.7rem;
-  border-radius: 0.7rem;
+.eye-btn{
+  position:absolute;
 
-  font-size: 0.85rem;
-  margin-bottom: 1rem;
+  top:50%;
+  right:18px;
 
-  border-left: 4px solid #10b981;
+  transform:translateY(-50%);
+
+  width:40px;
+  height:40px;
+
+  border:none;
+
+  background:transparent;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+
+  color:#64748b;
+
+  transition:.3s;
 }
 
-/* SWITCH LINK */
-.switch-link {
-  display: block;
-  margin-top: 1.5rem;
+.eye-btn:hover{
+  color:#7c3aed;
 
-  color: #6b7280;
-  text-decoration: none;
-  font-size: 0.9rem;
+  transform:
+  translateY(-50%)
+  scale(1.08);
 }
 
-.switch-link span {
-  color: #8b5cf6;
-  font-weight: 700;
+/* =========================================================
+   PASSWORD INFO
+========================================================= */
+
+.password-info{
+  display:block;
+
+  margin-top:-10px;
+  margin-bottom:24px;
+
+  color:#64748b;
+
+  font-size:13px;
 }
 
-.switch-link:hover span {
-  text-decoration: underline;
+/* =========================================================
+   REGISTER BUTTON
+========================================================= */
+
+.register-btn{
+  width:100%;
+  height:62px;
+
+  border:none;
+
+  border-radius:18px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #7c3aed,
+    #4f46e5
+  );
+
+  color:white;
+
+  font-size:18px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  position:relative;
+
+  overflow:hidden;
+
+  transition:.35s;
+
+  box-shadow:
+  0 18px 40px rgba(124,58,237,.22);
 }
 
-/* MOBILE */
-@media (max-width: 480px) {
-  .auth-box {
-    padding: 2rem;
-    margin: 1rem;
+/* =========================================================
+   BUTTON SHINE
+========================================================= */
+
+.register-btn::before{
+  content:"";
+
+  position:absolute;
+
+  top:-40px;
+  left:-120px;
+
+  width:70px;
+  height:180px;
+
+  background:
+  rgba(255,255,255,.25);
+
+  transform:rotate(25deg);
+
+  transition:.7s;
+}
+
+.register-btn:hover::before{
+  left:520px;
+}
+
+/* =========================================================
+   BUTTON HOVER
+========================================================= */
+
+.register-btn:hover{
+  transform:
+  translateY(-4px);
+
+  box-shadow:
+  0 24px 50px rgba(124,58,237,.30);
+}
+
+/* =========================================================
+   SWITCH LINK
+========================================================= */
+
+.switch-link{
+  margin-top:28px;
+
+  display:flex;
+  justify-content:center;
+
+  text-decoration:none;
+
+  color:#64748b;
+
+  font-size:15px;
+  font-weight:500;
+
+  transition:.3s;
+}
+
+.switch-link span{
+  margin-left:6px;
+
+  color:#7c3aed;
+
+  font-weight:700;
+}
+
+.switch-link:hover{
+  transform:
+  translateY(-2px);
+}
+
+/* =========================================================
+   TOAST CONTAINER
+========================================================= */
+
+.toast-container{
+  position:fixed;
+
+  top:20px;
+  right:20px;
+
+  z-index:9999;
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast-msg{
+  min-width:320px;
+
+  padding:16px 18px;
+
+  border-radius:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:14px;
+
+  color:white;
+
+  position:relative;
+
+  overflow:hidden;
+
+  margin-bottom:14px;
+
+  animation:
+  toastFade .4s ease;
+}
+
+/* =========================================================
+   SUCCESS TOAST
+========================================================= */
+
+.success-toast{
+  background:
+  linear-gradient(
+    135deg,
+    #22c55e,
+    #16a34a
+  );
+}
+
+/* =========================================================
+   ERROR TOAST
+========================================================= */
+
+.error-toast{
+  background:
+  linear-gradient(
+    135deg,
+    #ef4444,
+    #dc2626
+  );
+}
+
+/* =========================================================
+   TOAST CONTENT
+========================================================= */
+
+.toast-content{
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  font-size:15px;
+  font-weight:600;
+}
+
+/* =========================================================
+   TOAST CLOSE
+========================================================= */
+
+.toast-close-btn{
+  border:none;
+
+  background:transparent;
+
+  color:white;
+
+  cursor:pointer;
+
+  font-size:18px;
+}
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.toast-progress{
+  position:absolute;
+
+  left:0;
+  bottom:0;
+
+  height:4px;
+  width:100%;
+
+  background:
+  rgba(255,255,255,.4);
+
+  animation:
+  progress 3.5s linear forwards;
+}
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+    transform:translateY(25px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
   }
 }
 
+@keyframes toastFade{
 
-/* Toast konteyneri */
-.toast-container {
-  position: fixed;
-  top: 24px;
-  right: 24px;
-  z-index: 10000;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* Rasmdagi kabi asosiy toast dizayni */
-.toast-msg {
-  position: relative;
-  min-width: 320px;
-  padding: 16px 20px;
-  background-color: #f8f9fa; /* Och kulrang fon */
-  border: 1px solid #d1d5db;  /* Nozik chegara */
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  overflow: hidden; /* Progress barni kesib turishi uchun */
-  animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-/* Toast ichidagi matn va ikonka */
-.toast-content {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: #4b5563; /* Kulrang matn */
-  font-size: 14px;
-  font-weight: 500;
-  font-family: sans-serif;
-}
-
-/* Katta yashil dumaloq check ikonka */
-.toast-icon-success {
-  color: #00c853;
-  font-size: 22px;
-  display: flex;
-  align-items: center;
-}
-
-/* Katta qizil dumaloq xatolik ikonka */
-.toast-icon-error {
-  color: #d32f2f;
-  font-size: 22px;
-  display: flex;
-  align-items: center;
-}
-
-/* Yopish (X) tugmasi */
-.toast-close-btn {
-  background: none;
-  border: none;
-  color: #9ca3af;
-  font-size: 18px;
-  cursor: pointer;
-  transition: color 0.2s;
-  padding: 0 0 0 10px;
-}
-
-.toast-close-btn:hover {
-  color: #4b5563;
-}
-
-/* -----------------------------------------
-   TAGIDAGI YUKLANISH CHIZIG'I (PROGRESS BAR)
------------------------------------------ */
-.toast-progress {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 4px;
-  width: 100%;
-  /* 3.5 soniya ichida chiziq qisqarib tugaydi */
-  animation: shrinkProgress 3.5s linear forwards;
-}
-
-/* Muvaffaqiyatli bo'lganda yashil chiziq */
-.success-toast .toast-progress {
-  background-color: #00c853;
-}
-
-/* Xatolik bo'lganda qizil chiziq */
-.error-toast .toast-progress {
-  background-color: #ef4444;
-}
-
-/* -----------------------------------------
-   ANIMATSIYALAR
------------------------------------------ */
-/* O'ng tomondan silliq kirib kelish */
-@keyframes slideIn {
-  from {
-    transform: translateX(120%);
-    opacity: 0;
+  from{
+    opacity:0;
+    transform:
+    translateX(40px);
   }
-  to {
-    transform: translateX(0);
+
+  to{
+    opacity:1;
+    transform:
+    translateX(0);
   }
 }
 
-/* Progress bar chizig'ini kamaytirish */
-@keyframes shrinkProgress {
-  from {
-    width: 100%;
+@keyframes progress{
+
+  from{
+    width:100%;
   }
-  to {
-    width: 0%;
+
+  to{
+    width:0%;
   }
+}
+
+/* =========================================================
+   RESPONSIVE 768
+========================================================= */
+
+@media(max-width:768px){
+
+  .auth-box{
+    padding:40px 28px;
+
+    border-radius:28px;
+  }
+
+  .auth-box h2{
+    font-size:34px;
+  }
+
+  .input-group input{
+    height:58px;
+  }
+
+  .register-btn{
+    height:58px;
+  }
+
+}
+
+/* =========================================================
+   RESPONSIVE 500
+========================================================= */
+
+@media(max-width:500px){
+
+  .register-container{
+    padding:14px;
+  }
+
+  .auth-box{
+    padding:34px 22px;
+
+    border-radius:24px;
+  }
+
+  .auth-box h2{
+    font-size:30px;
+  }
+
+  .auth-box p{
+    font-size:14px;
+  }
+
+  .input-group input{
+    height:54px;
+
+    font-size:14px;
+  }
+
+  .register-btn{
+    height:54px;
+
+    font-size:15px;
+  }
+
+  .toast-msg{
+    min-width:100%;
+
+    width:100%;
+  }
+
+  .toast-container{
+    left:14px;
+    right:14px;
+  }
+
+}
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+.dark .register-container{
+  background:
+  radial-gradient(
+    circle at top left,
+    rgba(139,92,246,.16),
+    transparent 28%
+  ),
+
+  radial-gradient(
+    circle at bottom right,
+    rgba(99,102,241,.14),
+    transparent 28%
+  ),
+
+  #020617;
+}
+
+.dark .auth-box{
+  background:
+  rgba(15,23,42,.84);
+
+  border:
+  1px solid rgba(255,255,255,.08);
+
+  box-shadow:
+  0 20px 60px rgba(0,0,0,.45);
+}
+
+.dark .auth-box h2{
+  color:white;
+}
+
+.dark .auth-box p{
+  color:#94a3b8;
+}
+
+.dark .input-group input{
+  background:
+  rgba(17,24,39,.85);
+
+  border:
+  1px solid rgba(255,255,255,.08);
+
+  color:white;
+}
+
+.dark .input-group input::placeholder{
+  color:#94a3b8;
+}
+
+.dark .eye-btn{
+  color:#94a3b8;
+}
+
+.dark .eye-btn:hover{
+  color:#c4b5fd;
+}
+
+.dark .password-info{
+  color:#94a3b8;
+}
+
+.dark .switch-link{
+  color:#94a3b8;
+}
+
+.dark .switch-link span{
+  color:#c4b5fd;
 }

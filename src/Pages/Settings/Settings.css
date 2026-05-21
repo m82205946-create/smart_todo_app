@@ -1,442 +1,1094 @@
-/* =========================
+/* =========================================================
+   ULTRA SETTINGS PAGE CSS
+   FULL RESPONSIVE + DARK MODE + MODERN UI
+========================================================= */
+
+/* =========================================================
+   IMPORT
+========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:"Inter",sans-serif;
+  background:#f5f7ff;
+  overflow-x:hidden;
+}
+
+/* =========================================================
    ROOT VARIABLES
-========================= */
-:root {
-  --primary: #6366f1;
-  --primary2: #8b5cf6;
-  --danger: #ff4d4f;
-  --success: #22c55e;
+========================================================= */
 
-  --bg: #f6f7fb;
-  --card: #ffffff;
-  --text: #111827;
-  --muted: #6b7280;
-  --border: #e5e7eb;
+:root{
 
-  --radius: 16px;
-  --shadow: 0 10px 30px rgba(0,0,0,0.06);
-  --transition: all 0.3s ease;
+  --primary:#6366f1;
+  --primary2:#8b5cf6;
+
+  --danger:#ef4444;
+  --success:#22c55e;
+
+  --bg:#f5f7ff;
+
+  --card:
+  rgba(255,255,255,.88);
+
+  --text:#0f172a;
+
+  --muted:#64748b;
+
+  --border:
+  rgba(0,0,0,.06);
+
+  --radius:24px;
+
+  --shadow:
+  0 20px 45px rgba(0,0,0,.06);
+
+  --shadow2:
+  0 20px 50px rgba(99,102,241,.18);
+
+  --gradient:
+  linear-gradient(
+    135deg,
+    #6366f1,
+    #8b5cf6
+  );
+
+  --transition:
+  all .35s ease;
+
 }
 
-/* =========================
-   DARK MODE ROOT
-========================= */
-.app.dark {
-  --bg: #0f1117;
-  --card: #151821;
-  --text: #f9fafb;
-  --muted: #9ca3af;
-  --border: #252935;
+/* =========================================================
+   DARK MODE
+========================================================= */
 
-  --shadow: 0 10px 30px rgba(0,0,0,0.4);
+.app.dark{
+
+  --bg:#0b1120;
+
+  --card:
+  rgba(15,23,42,.85);
+
+  --text:#f8fafc;
+
+  --muted:#94a3b8;
+
+  --border:
+  rgba(255,255,255,.06);
+
+  --shadow:
+  0 20px 50px rgba(0,0,0,.45);
 }
 
-/* =========================
-   GLOBAL PAGE
-========================= */
-.settings-page {
-  min-height: 100vh;
-  padding: 40px;
-  background: var(--bg);
-  color: var(--text);
-  transition: var(--transition);
-  font-family: "Inter", sans-serif;
+/* =========================================================
+   PAGE
+========================================================= */
+
+.settings-page{
+
+  min-height:100vh;
+
+  padding:40px;
+
+  background:
+  radial-gradient(
+    circle at top left,
+    rgba(99,102,241,.10),
+    transparent 28%
+  ),
+
+  radial-gradient(
+    circle at bottom right,
+    rgba(139,92,246,.10),
+    transparent 28%
+  ),
+
+  var(--bg);
+
+  color:var(--text);
+
+  transition:var(--transition);
+
+  position:relative;
+
+  overflow:hidden;
 }
 
-/* =========================
+/* =========================================================
+   BG EFFECT TOP
+========================================================= */
+
+.settings-page::before{
+
+  content:"";
+
+  position:absolute;
+
+  top:-120px;
+  left:-120px;
+
+  width:320px;
+  height:320px;
+
+  border-radius:50%;
+
+  background:
+  rgba(99,102,241,.12);
+
+  filter:blur(90px);
+}
+
+/* =========================================================
+   BG EFFECT BOTTOM
+========================================================= */
+
+.settings-page::after{
+
+  content:"";
+
+  position:absolute;
+
+  right:-120px;
+  bottom:-120px;
+
+  width:320px;
+  height:320px;
+
+  border-radius:50%;
+
+  background:
+  rgba(139,92,246,.12);
+
+  filter:blur(90px);
+}
+
+/* =========================================================
    HEADER
-========================= */
-.settings-header {
-  margin-bottom: 30px;
+========================================================= */
+
+.settings-header{
+
+  position:relative;
+  z-index:2;
+
+  margin-bottom:36px;
 }
 
-.settings-header h1 {
-  font-size: 34px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
+/* =========================================================
+   HEADER TITLE
+========================================================= */
+
+.settings-header h1{
+
+  font-size:42px;
+
+  font-weight:900;
+
+  letter-spacing:-1px;
+
+  color:var(--text);
 }
 
-.settings-header p {
-  color: var(--muted);
-  margin-top: 6px;
+/* =========================================================
+   HEADER TEXT
+========================================================= */
+
+.settings-header p{
+
+  margin-top:10px;
+
+  color:var(--muted);
+
+  font-size:16px;
+
+  line-height:1.7;
 }
 
-/* =========================
-   CARD SYSTEM
-========================= */
-.settings-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 24px;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-  backdrop-filter: blur(10px);
+/* =========================================================
+   CARD
+========================================================= */
+
+.settings-card{
+
+  width:100%;
+
+  background:var(--card);
+
+  border:
+  1px solid var(--border);
+
+  border-radius:var(--radius);
+
+  padding:30px;
+
+  margin-bottom:28px;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:16px;
+
+  backdrop-filter:blur(18px);
+
+  box-shadow:var(--shadow);
+
+  transition:var(--transition);
+
+  position:relative;
+
+  overflow:hidden;
+
+  z-index:2;
+
+  animation:fadeUp .45s ease;
 }
 
-.settings-card:hover {
-  transform: translateY(-2px);
+/* =========================================================
+   CARD TOP BORDER
+========================================================= */
+
+.settings-card::before{
+
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:0;
+
+  width:100%;
+  height:5px;
+
+  background:var(--gradient);
 }
 
-/* =========================
+/* =========================================================
+   CARD HOVER
+========================================================= */
+
+.settings-card:hover{
+
+  transform:
+  translateY(-4px);
+
+  box-shadow:
+  0 25px 60px rgba(0,0,0,.08);
+}
+
+/* =========================================================
    CARD TITLE
-========================= */
-.card-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  margin-bottom: 22px;
-  font-size: 18px;
+========================================================= */
+
+.card-title{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  font-size:20px;
+
+  font-weight:800;
+
+  margin-bottom:16px;
 }
 
-.blue { color: var(--primary); }
-.purple { color: var(--primary2); }
-.red { color: var(--danger); }
+/* =========================================================
+   COLORS
+========================================================= */
 
-/* =========================
-   PROFILE SECTION
-========================= */
-.profile-box {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin-bottom: 22px;
+.blue{
+  color:var(--primary);
 }
 
-.avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary), var(--primary2));
+.purple{
+  color:var(--primary2);
+}
+
+.red{
+  color:var(--danger);
+}
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.profile-box{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:18px;
+
+  margin-bottom:20px;
+}
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
+.avatar{
+
+  width:74px;
+  height:74px;
+
+  border-radius:50%;
+
+  background:var(--gradient);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:white;
+
+  font-size:26px;
+  font-weight:800;
+
+  box-shadow:var(--shadow2);
+
+  flex-shrink:0;
+}
+
+/* =========================================================
+   INPUT GROUP
+========================================================= */
+
+.input-group{
+
+  display:flex;
+
+  flex-direction:column;
+
+  margin-bottom:20px;
+}
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.input-group label{
+
+  margin-bottom:8px;
+
+  font-size:13px;
+
+  font-weight:700;
+
+  color:var(--muted);
+
+  padding-left:4px;
+}
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.input-group input{
+
+  width:100%;
+  height:54px;
+
+  border-radius:16px;
+
+  border:
+  1px solid var(--border);
+
+  padding:0 18px;
+
+  background:
+  rgba(255,255,255,.45);
+
+  color:var(--text);
+
+  outline:none;
+
+  font-size:15px;
+
+  transition:var(--transition);
+}
+
+/* =========================================================
+   DARK INPUT
+========================================================= */
+
+.app.dark .input-group input{
+
+  background:
+  rgba(255,255,255,.03);
+}
+
+/* =========================================================
+   INPUT PLACEHOLDER
+========================================================= */
+
+.input-group input::placeholder{
+
+  color:#94a3b8;
+}
+
+/* =========================================================
+   INPUT FOCUS
+========================================================= */
+
+.input-group input:focus{
+
+  border-color:var(--primary);
+
+  box-shadow:
+  0 0 0 5px rgba(99,102,241,.16);
+
+  transform:
+  translateY(-1px);
+}
+
+/* =========================================================
+   SAVE BUTTON
+========================================================= */
+
+.save-btn{
+
+  width:100%;
+  height:56px;
+
+  border:none;
+
+  border-radius:16px;
+
+  background:var(--gradient);
+
+  color:white;
+
+  font-size:16px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:var(--transition);
+
+  box-shadow:
+  0 15px 40px rgba(99,102,241,.24);
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+/* =========================================================
+   BUTTON SHINE
+========================================================= */
+
+.save-btn::before{
+
+  content:"";
+
+  position:absolute;
+
+  top:-40px;
+  left:-120px;
+
+  width:70px;
+  height:180px;
+
+  background:
+  rgba(255,255,255,.22);
+
+  transform:
+  rotate(25deg);
+
+  transition:.8s;
+}
+
+.save-btn:hover::before{
+
+  left:520px;
+}
+
+/* =========================================================
+   SAVE HOVER
+========================================================= */
+
+.save-btn:hover{
+
+  transform:
+  translateY(-3px);
+
+  box-shadow:
+  0 20px 50px rgba(99,102,241,.34);
+}
+
+/* =========================================================
+   SAVED TEXT
+========================================================= */
+
+.saved-text{
+
+  margin-top:10px;
+
+  color:var(--success);
+
+  font-size:13px;
+
+  font-weight:600;
+}
+
+/* =========================================================
+   ROW
+========================================================= */
+
+.setting-row{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  padding:16px 0;
+
+  border-bottom:
+  1px solid var(--border);
+}
+
+/* =========================================================
+   LAST ROW
+========================================================= */
+
+.setting-row:last-child{
+
+  border-bottom:none;
+}
+
+/* =========================================================
+   ROW TEXT
+========================================================= */
+
+.setting-row p{
+
+  color:var(--muted);
+
+  font-size:14px;
+
+  line-height:1.7;
+}
+
+/* =========================================================
+   TOGGLE
+========================================================= */
+
+.toggle{
+
+  width:52px;
+  height:28px;
+
+  border-radius:999px;
+
+  background:#d1d5db;
+
+  position:relative;
+
+  cursor:pointer;
+
+  transition:var(--transition);
+
+  flex-shrink:0;
+}
+
+/* =========================================================
+   DARK TOGGLE
+========================================================= */
+
+.app.dark .toggle{
+
+  background:#263041;
+}
+
+/* =========================================================
+   ACTIVE TOGGLE
+========================================================= */
+
+.toggle.active{
+
+  background:var(--primary);
+}
+
+/* =========================================================
+   TOGGLE CIRCLE
+========================================================= */
+
+.toggle-circle{
+
+  width:22px;
+  height:22px;
+
+  border-radius:50%;
+
+  background:white;
+
+  position:absolute;
+
+  top:3px;
+  left:3px;
+
+  transition:var(--transition);
+
+  box-shadow:
+  0 3px 10px rgba(0,0,0,.2);
+}
+
+/* =========================================================
+   ACTIVE CIRCLE
+========================================================= */
+
+.toggle.active .toggle-circle{
+
+  left:27px;
+}
+
+/* =========================================================
+   SECURITY BUTTON
+========================================================= */
+
+.security-btn{
+
+  width:100%;
+  height:56px;
+
+  border-radius:16px;
+
+  border:
+  1px solid var(--border);
+
+  background:
+  rgba(255,255,255,.4);
+
+  color:var(--text);
+
+  padding:0 18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  font-size:15px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:var(--transition);
+}
+
+/* =========================================================
+   DARK SECURITY
+========================================================= */
+
+.app.dark .security-btn{
+
+  background:
+  rgba(255,255,255,.03);
+}
+
+/* =========================================================
+   SECURITY HOVER
+========================================================= */
+
+.security-btn:hover{
+
+  border-color:var(--primary);
+
+  background:
+  rgba(99,102,241,.08);
+
+  transform:
+  translateY(-2px);
+}
+
+/* =========================================================
+   SECURITY TITLE
+========================================================= */
+
+.security-title{
+
+  font-size:17px;
+
+  font-weight:700;
+
+  margin-bottom:10px;
+}
+
+/* =========================================================
+   SECURITY DESC
+========================================================= */
+
+.security-desc{
+
+  font-size:13px;
+
+  color:var(--muted);
+
+  margin-bottom:16px;
+
+  line-height:1.7;
+}
+
+/* =========================================================
+   DELETE BUTTON
+========================================================= */
+
+.delete-btn{
+
+  width:100%;
+  height:54px;
+
+  border:none;
+
+  border-radius:16px;
+
+  background:
+  rgba(239,68,68,.10);
+
+  color:var(--danger);
+
+  font-size:15px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:var(--transition);
+}
+
+/* =========================================================
+   DELETE HOVER
+========================================================= */
+
+.delete-btn:hover{
+
+  background:
+  rgba(239,68,68,.18);
+
+  transform:
+  translateY(-2px);
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes fadeUp{
+
+  from{
+
+    opacity:0;
+
+    transform:
+    translateY(20px);
+  }
+
+  to{
+
+    opacity:1;
+
+    transform:
+    translateY(0);
+  }
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar{
+
+  width:10px;
+}
+
+::-webkit-scrollbar-track{
+
+  background:#eef2ff;
+}
+
+::-webkit-scrollbar-thumb{
+
+  background:
+  linear-gradient(
+    180deg,
+    #6366f1,
+    #8b5cf6
+  );
+
+  border-radius:20px;
+}
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection{
+
+  background:#6366f1;
+
+  color:white;
+}
+
+/* =========================================================
+   RESPONSIVE 900
+========================================================= */
+
+@media(max-width:900px){
+
+  .settings-page{
+
+    padding:30px;
+  }
+
+  .settings-header h1{
+
+    font-size:36px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE 768
+========================================================= */
+
+@media(max-width:768px){
+
+  .settings-page{
+
+    padding:22px;
+  }
+
+  .settings-header{
+
+    margin-bottom:26px;
+  }
+
+  .settings-header h1{
+
+    font-size:30px;
+  }
+
+  .settings-header p{
+
+    font-size:14px;
+  }
+
+  .settings-card{
+
+    padding:24px;
+
+    border-radius:20px;
+  }
+
+  .profile-box{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+  }
+
+  .avatar{
+
+    width:62px;
+    height:62px;
+
+    font-size:22px;
+  }
+
+  .setting-row{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE 500
+========================================================= */
+
+@media(max-width:500px){
+
+  .settings-page{
+
+    padding:16px;
+  }
+
+  .settings-header h1{
+
+    font-size:26px;
+  }
+
+  .settings-card{
+
+    padding:18px;
+
+    border-radius:18px;
+  }
+
+  .card-title{
+
+    font-size:17px;
+  }
+
+  .input-group input{
+
+    height:50px;
+
+    font-size:14px;
+
+    border-radius:14px;
+  }
+
+  .save-btn{
+
+    height:50px;
+
+    font-size:14px;
+
+    border-radius:14px;
+  }
+
+  .security-btn{
+
+    height:50px;
+
+    font-size:14px;
+
+    border-radius:14px;
+  }
+
+  .delete-btn{
+
+    height:50px;
+
+    font-size:14px;
+
+    border-radius:14px;
+  }
+
+  .toggle{
+
+    width:48px;
+    height:26px;
+  }
+
+  .toggle-circle{
+
+    width:20px;
+    height:20px;
+  }
+
+  .toggle.active .toggle-circle{
+
+    left:24px;
+  }
+}
+
+
+.delete-acc {
+  width: 100%;
+  padding: 12px 14px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-weight: 800;
-  font-size: 22px;
-  box-shadow: 0 10px 20px rgba(99,102,241,0.3);
-}
+  gap: 10px;
 
-/* =========================
-   INPUTS
-========================= */
-.input-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 18px;
-}
-
-.input-group label {
-  font-size: 13px;
-  margin-bottom: 6px;
-  color: var(--muted);
-}
-
-.input-group input {
-  height: 48px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  padding: 0 14px;
-  outline: none;
-  background: transparent;
-  color: var(--text);
-  transition: var(--transition);
-}
-
-.input-group input:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(99,102,241,0.15);
-}
-
-/* =========================
-   SAVE BUTTON
-========================= */
-.save-btn {
-  width: 100%;
-  height: 50px;
-  border: none;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--primary), var(--primary2));
-  color: white;
-  font-weight: 700;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.save-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(99,102,241,0.3);
-}
-
-/* =========================
-   SUCCESS TEXT
-========================= */
-.saved-text {
-  margin-top: 10px;
-  color: var(--success);
-  font-size: 13px;
-}
-
-/* =========================
-   SETTINGS ROW
-========================= */
-.setting-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 0;
-}
-
-.setting-row p {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-/* =========================
-   THEME TOGGLE
-========================= */
-.theme-btn {
-  width: 72px;
-  height: 36px;
-  border-radius: 50px;
-  border: none;
-  background: #d1d5db;
-  position: relative;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.theme-btn.active {
-  background: var(--primary);
-}
-
-.circle {
-  width: 28px;
-  height: 28px;
-  background: white;
-  border-radius: 50%;
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  transition: var(--transition);
-}
-
-.theme-btn.active .circle {
-  left: 40px;
-}
-
-/* =========================
-   SECURITY BUTTONS
-========================= */
-/* =========================
-   SECURITY SECTION (NORMAL UI)
-========================= */
-
-.security-btn {
-  width: 100%;
-  height: 52px;
   border-radius: 12px;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 0 16px;
-
-  background: var(--card);
-  border: 1px solid var(--border);
-
-  color: var(--text);
-  font-size: 15px;
-  font-weight: 500;
-
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.security-btn:hover {
-  background: rgba(99, 102, 241, 0.05);
-  border-color: var(--primary);
-  transform: translateY(-1px);
-}
-
-/* ICON or arrow */
-.security-btn span {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-/* =========================
-   TOGGLE (CLEAN VERSION)
-========================= */
-
-.toggle {
-  width: 44px;
-  height: 24px;
-  border-radius: 50px;
-
-  background: #e5e7eb;
-  position: relative;
-
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.app.dark .toggle {
-  background: #2a3140;
-}
-
-.toggle.active {
-  background: var(--primary);
-}
-
-.toggle-circle {
-  width: 18px;
-  height: 18px;
+  border: 1px solid rgba(239, 68, 68, 0.25);
 
   background: #fff;
-  border-radius: 50%;
 
-  position: absolute;
-  top: 3px;
-  left: 3px;
-
-  transition: all 0.3s ease;
-}
-
-.toggle.active .toggle-circle {
-  left: 23px;
-}
-
-/* =========================
-   SECURITY TEXT STYLE
-========================= */
-
-.security-title {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.security-desc {
-  font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 16px;
-}
-
-/* =========================
-   DELETE BUTTON (SOFT)
-========================= */
-  
-.delete-acc {
-  width: 100%;
-  height: 48px;
-
-  border-radius: 12px;
-  border: 1px solid rgba(255, 77, 79, 0.2);
-
-  background: rgba(255, 77, 79, 0.08);
-  color: var(--danger);
+  color: #ef4444;
 
   font-weight: 600;
 
   cursor: pointer;
-  transition: all 0.25s ease;
+
+  transition: 0.25s ease;
+
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
 }
 
-.delete-btn:hover {
-  background: rgba(255, 77, 79, 0.15);
+.delete-acc:hover {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: #ef4444;
   transform: translateY(-1px);
 }
-/* =========================
-   DELETE BUTTON
-========================= */
-.delete-btn {
-  width: 100%;
-  height: 52px;
-  border-radius: 12px;
-  border: none;
-  background: rgba(255,77,79,0.1);
-  color: var(--danger);
-  font-weight: 700;
-  cursor: pointer;
-  transition: var(--transition);
+
+.delete-acc:active {
+  transform: scale(0.98);
 }
 
-.delete-btn:hover {
-  background: rgba(255,77,79,0.2);
+.delete-acc svg {
+  width: 18px;
+  height: 18px;
 }
 
-/* =========================
-   TOGGLE SWITCH
-========================= */
-.toggle {
-  width: 50px;
-  height: 26px;
-  border-radius: 50px;
-  background: #d1d5db;
-  position: relative;
-  cursor: pointer;
-  transition: var(--transition);
+/* DARK MODE */
+.app.dark .delete-acc {
+  background: #111827;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #f87171;
 }
 
-.toggle.active {
-  background: var(--primary);
-}
-
-.toggle-circle {
-  width: 20px;
-  height: 20px;
-  background: white;
-  border-radius: 50%;
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  transition: var(--transition);
-}
-
-.toggle.active .toggle-circle {
-  left: 26px;
-}
-
-/* =========================
-   ANIMATIONS
-========================= */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.settings-card {
-  animation: fadeIn 0.4s ease;
+.app.dark .delete-acc:hover {
+  background: rgba(239, 68, 68, 0.15);
 }
 
 /* =========================
    RESPONSIVE
 ========================= */
+
+@media (max-width: 1024px) {
+  .delete-acc {
+    padding: 11px 13px;
+    font-size: 14px;
+  }
+}
+
 @media (max-width: 768px) {
-  .settings-page {
-    padding: 20px;
+  .delete-acc {
+    padding: 10px 12px;
+    font-size: 13px;
+    gap: 8px;
   }
 
-  .settings-header h1 {
-    font-size: 26px;
+  .delete-acc svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .delete-acc {
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 10px;
   }
 
-  .avatar {
-    width: 52px;
-    height: 52px;
-    font-size: 18px;
+  .delete-acc span {
+    display: none; /* mobileda text qisqaradi */
   }
 }
