@@ -1103,11 +1103,11 @@ body{
 
   .chart-box{
 
-    padding:22px;
+    
   }
 
   .bar-chart-area{
-
+margin-left: -20px;
     gap:8px;
   }
 
@@ -1146,7 +1146,7 @@ body{
 
   .analytics-header h1{
 
-    font-size:26px;
+    font-size:22px;
   }
 
   .chart-box h3{

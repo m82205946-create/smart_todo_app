@@ -183,6 +183,10 @@ body {
     transform: translateX(0);
   }
 
+  .avatar{
+    display: none;
+  }
+
   .menu-btn {
     display: flex;
   }
@@ -190,6 +194,9 @@ body {
   .search {
     display: none;
   }
+  .avatar-wrapper {
+  display: none;
+}
 }/* ICON BUTTON BASE */
 .icon-btn {
   width: 46px;
@@ -243,4 +250,11 @@ body {
 .app.dark .icon-btn:hover {
   background: rgba(99, 102, 241, 0.2);
   border-color: #6366f1;
+}
+
+
+@media (max-width: 320px) {
+.avatar-wrapper {
+  display: none;
+}
 }
