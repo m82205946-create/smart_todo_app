@@ -194,9 +194,7 @@ body {
   .search {
     display: none;
   }
-  .avatar-wrapper {
-  display: none;
-}
+
 }/* ICON BUTTON BASE */
 .icon-btn {
   width: 46px;
@@ -253,8 +251,3 @@ body {
 }
 
 
-@media (max-width: 320px) {
-.avatar-wrapper {
-  display: none;
-}
-}

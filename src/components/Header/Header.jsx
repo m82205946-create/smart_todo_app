@@ -92,12 +92,7 @@ export default function Header({
           {/* PROFILE */}
           <div className="avatar-wrapper">
 
-            <div
-              className="avatar"
-              onClick={() => setProfileOpen(!profileOpen)}
-            >
-              <User size={22} color="#fff" />
-            </div>
+           
 
             {/* DROPDOWN */}
             {profileOpen && (
