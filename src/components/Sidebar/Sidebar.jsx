@@ -28,19 +28,30 @@ export default function Sidebar({
     };
 
     checkScreen();
+
     window.addEventListener("resize", checkScreen);
 
-    return () => window.removeEventListener("resize", checkScreen);
+    return () =>
+      window.removeEventListener("resize", checkScreen);
   }, []);
 
   // logout
   const handleLogout = () => {
     localStorage.removeItem("user");
+
     setUser(null);
+
     navigate("/login");
   };
 
-  // profile click (mobileda blok)
+  // mobile nav click => close sidebar
+  const handleNavClick = () => {
+    if (isMobile) {
+      setSidebarOpen(false);
+    }
+  };
+
+  // profile click
   const handleProfileClick = () => {
     if (isMobile) return;
 
@@ -57,11 +68,18 @@ export default function Sidebar({
         />
       )}
 
-      <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
+      <aside
+        className={`sidebar ${
+          sidebarOpen ? "open" : ""
+        }`}
+      >
 
         {/* TOP */}
         <div className="sidebar-top">
-          <h2 className="logo">Smart Todo App</h2>
+
+          <h2 className="logo">
+            Smart Todo App
+          </h2>
 
           <button
             className="close-btn"
@@ -69,6 +87,7 @@ export default function Sidebar({
           >
             <X size={20} />
           </button>
+
         </div>
 
         {/* CONTENT */}
@@ -77,39 +96,60 @@ export default function Sidebar({
           {/* NAV */}
           <nav className="sidebar-nav">
 
-            <NavLink to="/dashboard" end className="nav-link">
+            <NavLink
+              to="/dashboard"
+              end
+              className="nav-link"
+              onClick={handleNavClick}
+            >
               <LayoutDashboard size={20} />
               <span>Dashboard</span>
             </NavLink>
 
-            <NavLink to="/habits" className="nav-link">
+            <NavLink
+              to="/habits"
+              className="nav-link"
+              onClick={handleNavClick}
+            >
               <Calendar size={20} />
               <span>Habits</span>
             </NavLink>
 
-            <NavLink to="/tasks" className="nav-link">
+            <NavLink
+              to="/tasks"
+              className="nav-link"
+              onClick={handleNavClick}
+            >
               <BarChart3 size={20} />
               <span>Tasks</span>
             </NavLink>
 
-            <NavLink to="/settings" className="nav-link">
+            <NavLink
+              to="/settings"
+              className="nav-link"
+              onClick={handleNavClick}
+            >
               <Settings size={20} />
               <span>Settings</span>
             </NavLink>
 
           </nav>
 
-          {/* PROFILE (optional top section but still above logout) */}
-         
-
+      
+        
         </div>
 
-        {/* LOGOUT BOTTOM */}
+        {/* LOGOUT */}
         <div className="sidebar-bottom">
-          <button className="logout-btn" onClick={handleLogout}>
+
+          <button
+            className="logout-btn"
+            onClick={handleLogout}
+          >
             <LogOut size={20} />
             <span>Logout</span>
           </button>
+
         </div>
 
       </aside>

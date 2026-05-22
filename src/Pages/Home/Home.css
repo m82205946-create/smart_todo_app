@@ -179,7 +179,7 @@
 ========================================================= */
 
 .login-btns {
-  min-width: 180px;
+  width: 180px;
   height: 60px;
 
   padding: 0 30px;
@@ -766,11 +766,11 @@
   }
 
   .navbar {
-    flex-direction: column;
+   
 
     justify-content: center;
-
-    gap: 24px;
+display: flex;
+  justify-content: space-between;
 
     padding-top: 24px;
   }
@@ -806,7 +806,7 @@
 
   .login-btns {
     width: 100%;
-    max-width: 300px;
+    width: 125px;
   }
 
   .stats {
@@ -869,7 +869,6 @@
 
   .login-btns {
     height: 56px;
-
     font-size: 16px;
   }
 
@@ -895,7 +894,7 @@
    RESPONSIVE 400
 ========================================================= */
 
-@media (max-width: 400px) {
+@media (max-width: 320px) {
 
   .hero h1 {
     font-size: 32px;
@@ -915,5 +914,10 @@
 
   .card h2 {
     font-size: 34px;
+  }
+    .login-btns{
+    width: 50px;
+    
+  
   }
 }

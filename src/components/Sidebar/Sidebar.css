@@ -308,3 +308,11 @@
 /* =====================================================
    END
 ===================================================== */
+
+.logout-btn{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  gap: 5px;
+  align-items: center;
+}

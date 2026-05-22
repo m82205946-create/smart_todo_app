@@ -47,11 +47,7 @@ export default function WeeklyTasks({ habits = [] }) {
 
   return (
     <div className="analytics-container">
-      <header className="analytics-header">
-        <h1>Analytics</h1>
-        <p>Track your productivity insights</p>
-      </header>
-
+      
       {/* 1. TOP CARDS */}
       <div className="stats-row">
         <div className="stat-card">

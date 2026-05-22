@@ -31,14 +31,7 @@ export default function NewHabitModal({ isOpen, onClose, onAddHabit }) {
             </svg>
           </button>
 
-          <header className="glass-header">
-            <div className="glass-icon-wrapper">
-              <div className="glass-icon-pulse"></div>
-              <span className="glass-icon">★</span>
-            </div>
-            <h2>Yangi odat</h2>
-            <p>Hayotingizni tartibga soling</p>
-          </header>
+        
 
           <form onSubmit={handleSubmit} className="glass-form">
             <div className="glass-input-group">
