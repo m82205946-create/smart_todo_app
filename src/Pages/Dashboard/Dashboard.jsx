@@ -44,12 +44,16 @@ export default function Dashboard() {
     priority: "ortacha",
   });
 
-  // SAVE TASKS
+  /* =========================
+     SAVE TASKS
+  ========================= */
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
-  // SAVE DARK MODE
+  /* =========================
+     DARK MODE
+  ========================= */
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
 
@@ -60,7 +64,8 @@ export default function Dashboard() {
     }
   }, [darkMode]);
 
-const today = new Date().toISOString().split("T")[0];
+  const today = new Date().toISOString().split("T")[0];
+
   const todayTasks = useMemo(() => {
     return tasks
       .filter((task) => task.date === today)
@@ -76,26 +81,27 @@ const today = new Date().toISOString().split("T")[0];
     return tasks.filter((task) => task.date !== today);
   }, [tasks]);
 
-  // ✅ VALIDATION QO‘SHILDI
+  /* =========================
+     ADD TASK (DESC OPTIONAL)
+  ========================= */
   const addTask = () => {
-    if (!form.title || !form.desc || !form.date || !form.time) {
-      alert("Barcha maydonlarni to‘ldiring!");
+    if (!form.title || !form.date || !form.time) {
+      alert("Vazifa nomi, sana va vaqt majburiy!");
       return;
     }
 
-    if (form.title.trim().length < 10) {
-      alert("Vazifa nomi kamida 10 ta belgidan iborat bo‘lishi kerak!");
-      return;
-    }
-
-    if (form.desc.trim().length < 10) {
-      alert("Tavsif kamida 10 ta belgidan iborat bo‘lishi kerak!");
+    if (form.title.trim().length < 6) {
+      alert("Vazifa nomi kamida 6 ta belgidan iborat bo‘lishi kerak!");
       return;
     }
 
     const newTask = {
       id: Date.now(),
-      ...form,
+      title: form.title,
+      desc: form.desc || "", // ✅ OPTIONAL FIELD
+      date: form.date,
+      time: form.time,
+      priority: form.priority,
     };
 
     setTasks([...tasks, newTask]);
@@ -111,6 +117,9 @@ const today = new Date().toISOString().split("T")[0];
     setModalOpen(false);
   };
 
+  /* =========================
+     DELETE TASK
+  ========================= */
   const deleteTask = () => {
     setTasks(tasks.filter((task) => task.id !== selectedTask));
     setDeleteModal(false);
@@ -119,6 +128,9 @@ const today = new Date().toISOString().split("T")[0];
   return (
     <div className="dashboard">
 
+      {/* =========================
+          HEADER
+      ========================= */}
       <div className="dashboard-top">
 
         <div>
@@ -127,8 +139,6 @@ const today = new Date().toISOString().split("T")[0];
         </div>
 
         <div className="top-buttons">
-
-       
 
           <button
             className="add-btn"
@@ -142,6 +152,9 @@ const today = new Date().toISOString().split("T")[0];
 
       </div>
 
+      {/* =========================
+          TODAY TASKS
+      ========================= */}
       <div className="today-wrapper">
 
         {todayTasks.map((task) => (
@@ -169,7 +182,10 @@ const today = new Date().toISOString().split("T")[0];
 
                 <div className="task-info">
                   <h3>{task.title}</h3>
-                  <p>{task.desc}</p>
+
+                  {/* ✅ OPTIONAL DESC FIX */}
+                  <p>{task.desc || "Tavsif yo‘q"}</p>
+
                 </div>
 
               </div>
@@ -186,6 +202,9 @@ const today = new Date().toISOString().split("T")[0];
 
       </div>
 
+      {/* =========================
+          WEEKLY TASKS
+      ========================= */}
       <div className="weekly-wrapper">
 
         <div className="weekly-header">
@@ -210,8 +229,11 @@ const today = new Date().toISOString().split("T")[0];
               </button>
 
               <span className="date">{task.date}</span>
+
               <h3>{task.title}</h3>
-              <p>{task.desc}</p>
+
+              {/* ✅ OPTIONAL DESC FIX */}
+              <p>{task.desc || "Tavsif yo‘q"}</p>
 
               <div className="bottom">
                 <div className="week-time">{task.time}</div>
@@ -228,6 +250,9 @@ const today = new Date().toISOString().split("T")[0];
 
       </div>
 
+      {/* =========================
+          ADD MODAL
+      ========================= */}
       {modalOpen && (
         <div className="overlay">
 
@@ -250,7 +275,7 @@ const today = new Date().toISOString().split("T")[0];
             />
 
             <textarea
-              placeholder="Tavsif (min 10 belgi)"
+              placeholder="Tavsif (ixtiyoriy)"
               value={form.desc}
               onChange={(e) =>
                 setForm({ ...form, desc: e.target.value })
@@ -293,6 +318,9 @@ const today = new Date().toISOString().split("T")[0];
         </div>
       )}
 
+      {/* =========================
+          DELETE MODAL
+      ========================= */}
       {deleteModal && (
         <div className="overlay">
 
@@ -324,4 +352,4 @@ const today = new Date().toISOString().split("T")[0];
 
     </div>
   );
-}
+}   
